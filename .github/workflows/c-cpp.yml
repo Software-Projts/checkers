@@ -19,7 +19,7 @@ jobs:
       with:
         version: latest
     - name: Set execute permissions
-      run: chmod +x ./configure
+      run: chmod +x ./configure.ac
     - name: Build with make
       run: make
     - name: Check PATH
