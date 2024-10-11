@@ -14,8 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y <dependency-name>
+    - name: Check PATH
+      run: echo $PATH
     - name: configure
       run: ./configure
     - name: make
