@@ -18,7 +18,8 @@ jobs:
       uses: egor-tensin/setup-gcc@v1
       with:
         version: latest
-
+    - name: Set execute permissions
+      run: chmod +x configure
     - name: Build with make
       run: make
     - name: Check PATH
