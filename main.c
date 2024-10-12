@@ -20,6 +20,7 @@ int main() {
                     red[0] = 'r';
                     red[1] = intToChar;
                     red[3] = '\0';
+                    printf("%s", red);
                     makeBoard('2', red, i, j);
                 }else if ((i==0)||(i==2)) {
                     makeBoard(' ', 'b', i, j);
