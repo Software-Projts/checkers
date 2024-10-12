@@ -22,7 +22,10 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y autoconf automake
 
     - name: Generate configure script
-      run: autoreconf -i
+      run: | 
+        autoreconf -i
+        echo "after autoreconf: "
+        ls -la
     - name: Set execute permissions
       run: chmod +x ./configure.ac
     - name: List files in directory
@@ -32,7 +35,10 @@ jobs:
     - name: Check PATH
       run: echo $PATH
     - name: configure
-      run: ./configure
+      run: |
+        ./configure
+        echo "after configue: "
+        ls -la
     - name: make
       run: make
     - name: make check
