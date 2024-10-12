@@ -52,9 +52,10 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
 }
 
 char assignPieceNum(char piece, int num) {
+    char charToInt = '0' + num;
     char pieceNum[3];
     pieceNum[0] = piece;
-    pieceNum[1] = num;
+    pieceNum[1] = charToInt;
     pieceNum[2] = '\0';
     printf("%s", pieceNum);
     return pieceNum; 
