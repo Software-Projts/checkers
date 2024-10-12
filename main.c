@@ -55,3 +55,4 @@ char assignPieceNum(char piece, int num) {
     pieceNum[1] = num;
     return pieceNum; 
 }
+
