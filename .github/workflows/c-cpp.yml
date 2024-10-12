@@ -28,15 +28,13 @@ jobs:
         ls -la
     - name: Set execute permissions
       run: chmod +x ./configure.ac
-    - name: Build with make
-      run: make
-    - name: Check PATH
-      run: echo $PATH
     - name: configure
       run: |
         ./configure
         echo "after configue: "
         ls -la
+    - name: Build with make
+      run: make
     - name: make
       run: make
     - name: make check
