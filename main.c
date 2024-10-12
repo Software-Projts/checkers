@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 int piecNumber = 1;
-char board[8][8];
+int board[8][8];
 char red[3];
 char black[3];
 char num1[];
@@ -60,15 +60,15 @@ int main() {
 
 char makeBoard(char even[], char odd[], int outIt, int inIt) {
     if(inIt % 2 == 0) {
-        board[outIt][inIt] = even[0];
-        printf("%c  ", board[outIt][inIt]);
+        board[outIt][inIt] = 1;
+        printf("%d  ", board[outIt][inIt]);
     }else {
         if(inIt != 7) {
-            board[outIt][inIt] = odd[0];
-            printf("%c  ", board[outIt][inIt]);
+            board[outIt][inIt] = 1 ;
+            printf("%d  ", board[outIt][inIt]);
         }else {
-            board[outIt][inIt] = odd;
-            printf("%c", board[outIt][inIt]);
+            board[outIt][inIt] = 1;
+            printf("%d", board[outIt][inIt]);
         }
     }
 }
