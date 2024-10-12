@@ -12,7 +12,7 @@ int main() {
                     printf("%c  ", board[i][j]);
                 }else {
                     if(j != 7) {
-                        if((j>=0 && j<=2)||(j>=5)) {
+                        if(j<=3) {
                             board[i][j] = 'r';
                             printf("%c  ", board[i][j]);
                         }else {
@@ -26,8 +26,13 @@ int main() {
                 }
              }else {
                 if(j % 2 == 0) {
-                    board[i][j] = '2';
-                    printf("%c  ", board[i][j]);
+                    if(j>=3) {
+                         board[i][j] = 'r';
+                        printf("%c", board[i][j]);
+                    }else {
+                        board[i][j] = '2';
+                        printf("%c", board[i][j]);
+                    }
                 }else {
                     if(j != 7) {
                         board[i][j] = '1';
@@ -42,4 +47,3 @@ int main() {
         printf("\n");
     }
 }
-
