@@ -29,7 +29,7 @@ int main() {
                 }
              }        
         }
-        printf(assignPieceNum('w', 1));
+        //printf(assignPieceNum('w', 1));
         printf("\n");
     }
 }
