@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 int piecNumber = 1;
-int board[8][8];
+char board[8][8][];
 //Functions
-char makeBoard(int even, int odd, int outIt, int inIt);
+char makeBoard(char even, char odd, int outIt, int inIt);
 
 //Main function
 int main() {
@@ -41,10 +41,6 @@ int main() {
 char makeBoard(int even, int odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
-
-            if(even == 'r') {
-                even = 'r'+odd;
-            }
             board[outIt][inIt] = even;
             printf("%c  ", board[outIt][inIt]);
         }else {
