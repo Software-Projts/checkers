@@ -31,8 +31,6 @@ int main() {
                 }
              }        
         }
-        char out = assignPieceNum('w', 1);
-        printf("%s", out);
         printf("\n");
     }
 }
@@ -53,9 +51,10 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
 }
 
 char assignPieceNum(char piece, int num) {
-    char pieceNum[2];
+    char pieceNum[3];
     pieceNum[0] = piece;
     pieceNum[1] = num;
+    printf("%s", pieceNum);
     return pieceNum; 
 }
 
