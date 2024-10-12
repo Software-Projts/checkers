@@ -38,7 +38,7 @@ int main() {
     }
 }
 
-char makeBoard(int even, int odd, int outIt, int inIt) {
+char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
             board[outIt][inIt] = even;
