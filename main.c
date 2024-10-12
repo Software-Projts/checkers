@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 int piecNumber = 1;
-char board[8][8][];
+char board[8][8][4];
 //Functions
 char makeBoard(char even, char odd, int outIt, int inIt);
 
