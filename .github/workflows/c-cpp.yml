@@ -24,7 +24,7 @@ jobs:
     - name: Generate configure script
       run: | 
         autoreconf -i
-        automake --add-missing
+        automake --add-missing --copy --force-missing
         echo "after autoreconf and automake: "
         ls -la
     - name: Set execute permissions
