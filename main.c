@@ -8,7 +8,8 @@ int main() {
             board[i][j] = 1;
             printf("%d", board[i][j]);
         }
-    };
+        printf("\n");
+    }
     printf("Hi");
-
 }
+
