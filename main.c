@@ -3,12 +3,8 @@
 #include <string.h>
 int piecNumber = 1;
 int board[8][8];
-char red[3];
-char black[3];
-char num1[];
-char num2[];
 //Functions
-char makeBoard(char even[], char odd[], int outIt, int inIt);
+char makeBoard(int even, int odd, int outIt, int inIt);
 
 //Main function
 int main() {
@@ -21,36 +17,20 @@ int main() {
             if(i % 2 == 0) {
                 
                 if((i == 6)) {
-                    char intToChar = '0' + piecNumber;
-                    red[0] = 'r';
-                    red[1] = intToChar;
-                    red[2] = '\0';
-                    makeBoard(num2, red, i, j);
+                    makeBoard(2, 1, i, j);
                 }else if ((i==0)||(i==2)) {
-                    char intToChar = '0' + piecNumber;
-                    black[0] = 'b';
-                    black[1] = intToChar;
-                    black[2] = '\0';
-                    makeBoard(num1, black, i, j);
+                    makeBoard(1, 2, i, j);
                 }else {
-                    makeBoard(num1, num2, i, j);
+                    makeBoard(1, 2, i, j);
                 }
             // 1, 3, 5, 7 rows
              }else {
                 if((i == 7)||(i == 5)) {
-                    char intToChar = '0' + piecNumber;
-                    red[0] = 'r';
-                    red[1] = intToChar;
-                    red[2] = '\0';
-                    makeBoard(red, num2, i, j);
+                    makeBoard(1, 2, i, j);
                 }else if(i==1) {
-                    char intToChar = '0' + piecNumber;
-                    black[0] = 'b';
-                    black[1] = intToChar;
-                    black[2] = '\0';
-                    makeBoard(black, num2, i, j);
+                    makeBoard(1, 2, i, j);
                 }else {
-                    makeBoard(num2, num1, i, j);
+                    makeBoard(2, 1, i, j);
                 }
              }        
         }
@@ -60,7 +40,7 @@ int main() {
 
 char makeBoard(char even[], char odd[], int outIt, int inIt) {
     if(inIt % 2 == 0) {
-        board[outIt][inIt] = 1;
+        board[outIt][inIt] = 2;
         printf("%d  ", board[outIt][inIt]);
     }else {
         if(inIt != 7) {
