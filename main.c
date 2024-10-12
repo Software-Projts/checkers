@@ -31,6 +31,7 @@ int main() {
                 }
              }        
         }
+        assignPieceNum('w', 1+i);
         printf("\n");
     }
 }
