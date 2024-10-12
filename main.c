@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 char board[8][8];
+//Functions
 char makeBoard(char even, char odd, int outIt, int inIt);
+char assignPieceNum(char piece, int num);
 int main() {
     //Sets ups the board with pieces in place
     for(int i = 0; i < 8; i++) {
@@ -27,6 +29,7 @@ int main() {
                 }
              }        
         }
+        printf(assignPieceNum('w', 1));
         printf("\n");
     }
 }
@@ -44,4 +47,11 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             printf("%c", board[outIt][inIt]);
         }
     }
+}
+
+char assignPieceNum(char piece, int num) {
+    char pieceNum[2];
+    pieceNum[0] = piece;
+    pieceNum[1] = num;
+    return pieceNum; 
 }
