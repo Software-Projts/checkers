@@ -4,8 +4,11 @@
 int piecNumber = 1;
 char board[8][8];
 char red[3];
+char black[3];
+char num1[] = '1';
+char num2[] = '2';
 //Functions
-char makeBoard(char even, char odd[], int outIt, int inIt);
+char makeBoard(char even[], char odd[], int outIt, int inIt);
 
 //Main function
 int main() {
@@ -19,22 +22,31 @@ int main() {
                     char intToChar = '0' + piecNumber;
                     red[0] = 'r';
                     red[1] = intToChar;
-                    red[3] = '\0';
+                    red[2] = '\0';
                     printf("%s", red);
-                    makeBoard('2', red, i, j);
+                    makeBoard(num2, red, i, j);
                 }else if ((i==0)||(i==2)) {
-                    makeBoard(' ', 'b', i, j);
+                    black[0] = 'b';
+                    black[1] = intToChar;
+                    black[2] = '\0';
+                    makeBoard(num1, black, i, j);
                 }else {
-                    makeBoard('1', ' ', i, j);
+                    makeBoard(num1, num2, i, j);
                 }
             // 1, 3, 5, 7 rows
              }else {
                 if((i == 7)||(i == 5)) {
-                    makeBoard('r', '2', i, j);
+                    red[0] = 'r';
+                    red[1] = intToChar;
+                    red[2] = '\0';
+                    makeBoard(red, num2, i, j);
                 }else if(i==1) {
-                    makeBoard('b', '2', i, j);
+                    black[0] = 'b';
+                    black[1] = intToChar;
+                    black[2] = '\0';
+                    makeBoard(black, num2, i, j);
                 }else {
-                    makeBoard('2', '1', i, j);
+                    makeBoard(num2, num1, i, j);
                 }
              }        
         }
@@ -49,10 +61,10 @@ char makeBoard(char even, char odd[], int outIt, int inIt) {
     }else {
         if(inIt != 7) {
             board[outIt][inIt] = odd;
-            printf("%c  ", board[outIt][inIt]);
+            printf("%s  ", board[outIt][inIt]);
         }else {
             board[outIt][inIt] = odd;
-            printf("%c", board[outIt][inIt]);
+            printf("%s", board[outIt][inIt]);
         }
     }
 }
