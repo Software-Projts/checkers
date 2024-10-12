@@ -41,6 +41,10 @@ int main() {
 char makeBoard(int even, int odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
+
+            if(even == 'r') {
+                even = 'r'+odd;
+            }
             board[outIt][inIt] = even;
             printf("%c  ", board[outIt][inIt]);
         }else {
