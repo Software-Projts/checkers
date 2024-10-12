@@ -11,14 +11,14 @@ int main() {
                 if((i == 6) || (i == 8)) {
                     makeBoard('r', '2', i, j);
                 }else {
-                    makeBoard('r', '2', i, j);
+                    makeBoard('1', '2', i, j);
                 }
             // 1, 3, 5, 7 rows
              }else {
                 if(i == 7) {
                     makeBoard('r', '1', i, j);
                 }else {
-                    makeBoard('r', '1', i, j);
+                    makeBoard('2', '1', i, j);
                 }
              }
                     
@@ -41,3 +41,4 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
         }
     }
 }
+
