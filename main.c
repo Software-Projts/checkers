@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+int piecNumber = 1;
 char board[8][8];
+char red[3];
 //Functions
 char makeBoard(char even, char odd, int outIt, int inIt);
-char assignPieceNum(char piece, int num);
+
+//Main function
 int main() {
     //Sets ups the board with pieces in place
     for(int i = 0; i < 8; i++) {
@@ -14,7 +16,11 @@ int main() {
             if(i % 2 == 0) {
                 
                 if((i == 6)) {
-                    makeBoard('2', 'r', i, j);
+                    char intToChar = '0' + piecNumber;
+                    red[0] = 'r';
+                    red[1] = intToChar;
+                    red[3] = '\0';
+                    makeBoard('2', intToChar, i, j);
                 }else if ((i==0)||(i==2)) {
                     makeBoard(' ', 'b', i, j);
                 }else {
@@ -31,7 +37,6 @@ int main() {
                 }
              }        
         }
-        assignPieceNum('w', 1+i);
         printf("\n");
     }
 }
@@ -49,15 +54,5 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             printf("%c", board[outIt][inIt]);
         }
     }
-}
-
-char assignPieceNum(char piece, int num) {
-    char charToInt = '0' + num;
-    char pieceNum[3];
-    pieceNum[0] = piece;
-    pieceNum[1] = charToInt;
-    pieceNum[2] = '\0';
-    printf("%s", pieceNum);
-    return pieceNum; 
 }
 
