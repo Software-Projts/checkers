@@ -29,7 +29,8 @@ int main() {
                 }
              }        
         }
-        //printf(assignPieceNum('w', 1));
+        char out = assignPieceNum('w', 1);
+        printf("%c", out);
         printf("\n");
     }
 }
