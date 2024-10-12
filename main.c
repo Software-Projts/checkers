@@ -20,7 +20,7 @@ int main() {
                     red[0] = 'r';
                     red[1] = intToChar;
                     red[3] = '\0';
-                    makeBoard('2', intToChar, i, j);
+                    makeBoard('2', red, i, j);
                 }else if ((i==0)||(i==2)) {
                     makeBoard(' ', 'b', i, j);
                 }else {
