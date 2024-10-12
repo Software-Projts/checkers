@@ -41,3 +41,4 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
         }
     }
 }
+
