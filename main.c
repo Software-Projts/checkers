@@ -15,20 +15,20 @@ int main() {
             if(i % 2 == 0) {
                 
                 if((i == 6)) {
-                    makeBoard('r', 2, i, j);
+                    makeBoard('r', '2', i, j);
                 }else if ((i==0)||(i==2)) {
-                    makeBoard('r', 2, i, j);
+                    makeBoard('r', '2', i, j);
                 }else {
-                    makeBoard(1, 2, i, j);
+                    makeBoard('1', '2', i, j);
                 }
             // 1, 3, 5, 7 rows
              }else {
                 if((i == 7)||(i == 5)) {
-                    makeBoard(2, 1, i, j);
+                    makeBoard('2', 'b', i, j);
                 }else if(i==1) {
-                    makeBoard(2, 1, i, j);
+                    makeBoard('2', 'b', i, j);
                 }else {
-                    makeBoard(2, 1, i, j);
+                    makeBoard('2', 'b', i, j);
                 }
              }        
         }
