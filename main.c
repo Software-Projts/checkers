@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 char board[8][8];
-char makeBoard(char piece, char even, char odd, int outIt, int inIt);
+char makeBoard(char even, char odd, int outIt, int inIt);
 int main() {
     //Sets ups the board with pieces in place
     for(int i = 0; i < 8; i++) {
