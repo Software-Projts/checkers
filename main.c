@@ -25,8 +25,7 @@ int main() {
                 }else {
                     makeBoard('2', '1', i, j);
                 }
-             }
-                    
+             }        
         }
         printf("\n");
     }
