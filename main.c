@@ -12,6 +12,8 @@ char makeBoard(char even[], char odd[], int outIt, int inIt);
 
 //Main function
 int main() {
+    num1[0] = 1;
+    num2[0] = 2;
     //Sets ups the board with pieces in place
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
@@ -23,7 +25,6 @@ int main() {
                     red[0] = 'r';
                     red[1] = intToChar;
                     red[2] = '\0';
-                    printf("%s", red);
                     makeBoard(num2, red, i, j);
                 }else if ((i==0)||(i==2)) {
                     char intToChar = '0' + piecNumber;
