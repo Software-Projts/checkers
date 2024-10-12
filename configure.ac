@@ -11,5 +11,5 @@ AC_PROG_CC
 # Example: AC_CHECK_HEADERS([stdio.h])
 
 # Output files
-AC_CONFIG_FILES([makefile])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
