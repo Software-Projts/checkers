@@ -38,14 +38,19 @@ int main() {
 
 char makeBoard(int even, int odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
-        board[outIt][inIt] = 2;
-        printf("%d  ", board[outIt][inIt]);
-    }else {
         if(inIt != 7) {
-            board[outIt][inIt] = 1 ;
+            board[outIt][inIt] = even;
             printf("%d  ", board[outIt][inIt]);
         }else {
-            board[outIt][inIt] = 1;
+             board[outIt][inIt] = even;
+            printf("%d", board[outIt][inIt]);
+        }
+    }else {
+        if(inIt != 7) {
+            board[outIt][inIt] = odd;
+            printf("%d  ", board[outIt][inIt]);
+        }else {
+            board[outIt][inIt] = odd;
             printf("%d", board[outIt][inIt]);
         }
     }
