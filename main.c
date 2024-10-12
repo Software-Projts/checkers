@@ -8,8 +8,6 @@ char makeBoard(int even, int odd, int outIt, int inIt);
 
 //Main function
 int main() {
-    num1[0] = 1;
-    num2[0] = 2;
     //Sets ups the board with pieces in place
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
