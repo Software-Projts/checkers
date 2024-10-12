@@ -11,7 +11,7 @@ int main() {
                 
                 if((i == 6)) {
                     makeBoard('r', '2', i, j);
-                }else if ((i==0)||(i==3)) {
+                }else if ((i==0)||(i==2)) {
                     makeBoard('b', ' ', i, j);
                 }else {
                     makeBoard('1', ' ', i, j);
