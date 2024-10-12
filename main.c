@@ -16,7 +16,7 @@ int main() {
             // 1, 3, 5, 7 rows
              }else {
                 if((i == 7)||(i == 5)) {
-                    makeBoard('1', 'r', i, j);
+                    makeBoard('2', 'r', i, j);
                 }else {
                     makeBoard('2', '1', i, j);
                 }
