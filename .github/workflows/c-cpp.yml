@@ -8,10 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up GCC
@@ -22,23 +19,22 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y autoconf automake
 
     - name: Generate configure script
-      run: | 
-        autoreconf -i
-        automake --add-missing --copy --force-missing
-        echo "after autoreconf and automake: "
-        ls -la
+      run: autoreconf -i
+      
     - name: Set execute permissions
       run: chmod +x ./configure.ac
+      
     - name: configure
-      run: |
-        ./configure
-        echo "after configue: "
-        ls -la
+      run: ./configure
+      
     - name: Build with make
       run: make
+      
     - name: make
       run: make
+
     - name: make check
       run: make check
+      
     - name: make distcheck
       run: make distcheck
