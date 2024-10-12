@@ -20,8 +20,8 @@ int main() {
                             printf("%c  ", board[i][j]);
                         }
                     }else {
-                        board[i][j] = 'r';
-                        printf("%c", board[i][j]);
+                        board[i][j] = '2';
+                        printf("%c  ", board[i][j]);
                     }
                 }
              }else {
