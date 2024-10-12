@@ -38,7 +38,7 @@ int main() {
     }
 }
 
-char makeBoard(char even[], char odd[], int outIt, int inIt) {
+char makeBoard(int even, int odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         board[outIt][inIt] = 2;
         printf("%d  ", board[outIt][inIt]);
