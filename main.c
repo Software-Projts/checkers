@@ -15,9 +15,9 @@ int main() {
             if(i % 2 == 0) {
                 
                 if((i == 6)) {
-                    makeBoard(1, 2, i, j);
+                    makeBoard('r', 2, i, j);
                 }else if ((i==0)||(i==2)) {
-                    makeBoard(1, 2, i, j);
+                    makeBoard('r', 2, i, j);
                 }else {
                     makeBoard(1, 2, i, j);
                 }
@@ -32,6 +32,8 @@ int main() {
                 }
              }        
         }
+        // r == 72
+        // b == 62
         printf("\n");
     }
 }
@@ -40,18 +42,18 @@ char makeBoard(int even, int odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
             board[outIt][inIt] = even;
-            printf("%d  ", board[outIt][inIt]);
+            printf("%c  ", board[outIt][inIt]);
         }else {
              board[outIt][inIt] = even;
-            printf("%d", board[outIt][inIt]);
+            printf("%c", board[outIt][inIt]);
         }
     }else {
         if(inIt != 7) {
             board[outIt][inIt] = odd;
-            printf("%d  ", board[outIt][inIt]);
+            printf("%c  ", board[outIt][inIt]);
         }else {
             board[outIt][inIt] = odd;
-            printf("%d", board[outIt][inIt]);
+            printf("%c", board[outIt][inIt]);
         }
     }
 }
