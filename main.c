@@ -3,7 +3,11 @@
 int board[8][8];
 
 int main() {
-    printf("Hi");
-    printf("Hi#5");
+    for(int i = 0; i < 8; i++) {
+        for(int j = 0; j < 8; j++) {
+            board[i][j] = 1;
+        }
+    }
+    printf("%d", board);
 
 }
