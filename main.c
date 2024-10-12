@@ -30,7 +30,7 @@ int main() {
              }        
         }
         char out = assignPieceNum('w', 1);
-        printf("%c", out);
+        printf("%s", out);
         printf("\n");
     }
 }
