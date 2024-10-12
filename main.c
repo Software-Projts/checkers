@@ -7,7 +7,7 @@ int main() {
         for(int j = 0; j < 8; j++) {
             board[i][j] = 1;
             if(j != 7) {
-                printf("%d     ", board[i][j]);
+                printf("%d  ", board[i][j]);
             }else {
                 printf("%d", board[i][j]);
             }
