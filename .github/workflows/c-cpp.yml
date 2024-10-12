@@ -18,8 +18,11 @@ jobs:
       uses: egor-tensin/setup-gcc@v1
       with:
         version: latest
-    - name: Set execute permissions
-      run: chmod +x ./configure.ac
+    - name: Install build dependencies
+      run: sudo apt-get update && sudo apt-get install -y autoconf automake
+
+    - name: Generate configure script
+      run: autoreconf -i
     - name: Build with make
       run: make
     - name: Check PATH
