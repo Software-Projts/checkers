@@ -23,6 +23,8 @@ jobs:
 
     - name: Generate configure script
       run: autoreconf -i
+    - name: Set execute permissions
+      run: chmod +x ./configure.ac
     - name: Build with make
       run: make
     - name: Check PATH
