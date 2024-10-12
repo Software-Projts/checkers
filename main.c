@@ -55,6 +55,7 @@ char assignPieceNum(char piece, int num) {
     char pieceNum[3];
     pieceNum[0] = piece;
     pieceNum[1] = num;
+    pieceNum[2] = '\0';
     printf("%s", pieceNum);
     return pieceNum; 
 }
