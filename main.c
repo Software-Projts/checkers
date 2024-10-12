@@ -28,10 +28,10 @@ int main() {
                 if(j % 2 == 0) {
                     if(j>=3) {
                          board[i][j] = 'r';
-                        printf("%c", board[i][j]);
+                        printf("%c  ", board[i][j]);
                     }else {
                         board[i][j] = '2';
-                        printf("%c", board[i][j]);
+                        printf("%c  ", board[i][j]);
                     }
                 }else {
                     if(j != 7) {
