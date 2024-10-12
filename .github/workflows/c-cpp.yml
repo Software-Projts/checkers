@@ -25,14 +25,14 @@ jobs:
       run: autoreconf -i
     - name: Set execute permissions
       run: chmod +x ./configure.ac
+    - name: List files in directory
+      run: ls -la
     - name: Build with make
       run: make
     - name: Check PATH
       run: echo $PATH
     - name: configure
       run: ./configure
-    - name: List files in directory
-      run: ls -la
     - name: make
       run: make
     - name: make check
