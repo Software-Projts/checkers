@@ -9,5 +9,6 @@ int main() {
         }
     }
     printf("%d", board);
+    printf("Hi");
 
 }
