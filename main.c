@@ -8,10 +8,18 @@ int main() {
         for(int j = 0; j < 8; j++) {
             //2, 4, 6, 8 rows
             if(i % 2 == 0) {
-                makeBoard('r', '1', '2', i, j);
+                if((i == 6) || (i == 8)) {
+                    makeBoard('r', '2', i, j);
+                }else {
+                    makeBoard('r', '2', i, j);
+                }
             // 1, 3, 5, 7 rows
              }else {
-                makeBoard('r', '2', '1', i, j);
+                if(i == 7) {
+                    makeBoard('r', '1', i, j);
+                }else {
+                    makeBoard('r', '1', i, j);
+                }
              }
                     
         }
@@ -19,7 +27,7 @@ int main() {
     }
 }
 
-char makeBoard(char piece, char even, char odd, int outIt, int inIt) {
+char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         board[outIt][inIt] = even;
         printf("%c  ", board[outIt][inIt]);
@@ -28,8 +36,8 @@ char makeBoard(char piece, char even, char odd, int outIt, int inIt) {
             board[outIt][inIt] = odd;
             printf("%c  ", board[outIt][inIt]);
         }else {
-                board[outIt][inIt] = odd;
-                printf("%c", board[outIt][inIt]);
+            board[outIt][inIt] = odd;
+            printf("%c", board[outIt][inIt]);
         }
     }
 }
