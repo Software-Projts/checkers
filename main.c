@@ -17,9 +17,9 @@ int main() {
                 if((i == 6)) {
                     makeBoard(2, 1, i, j);
                 }else if ((i==0)||(i==2)) {
-                    makeBoard(1, 2, i, j);
+                    makeBoard(2, 1, i, j);
                 }else {
-                    makeBoard(1, 2, i, j);
+                    makeBoard(2, 1, i, j);
                 }
             // 1, 3, 5, 7 rows
              }else {
@@ -28,7 +28,7 @@ int main() {
                 }else if(i==1) {
                     makeBoard(1, 2, i, j);
                 }else {
-                    makeBoard(2, 1, i, j);
+                    makeBoard(1, 2, i, j);
                 }
              }        
         }
