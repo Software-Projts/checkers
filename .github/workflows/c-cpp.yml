@@ -31,6 +31,8 @@ jobs:
       run: echo $PATH
     - name: configure
       run: ./configure
+    - name: List files in directory
+      run: ls -la
     - name: make
       run: make
     - name: make check
