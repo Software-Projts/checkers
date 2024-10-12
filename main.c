@@ -4,7 +4,7 @@
 int piecNumber = 1;
 char board[8][8][4];
 //Functions
-char makeBoard(char even, char odd, int outIt, int inIt);
+char makeBoard(char even[], char odd[], int outIt, int inIt);
 
 //Main function
 int main() {
