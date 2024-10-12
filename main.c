@@ -38,10 +38,10 @@ int main() {
     }
 }
 
-char makeBoard(char even, char odd, int outIt, int inIt) {
+char makeBoard(char even[], char odd[], int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
-            board[outIt][inIt] = 'e';
+            board[outIt][inIt] = even;
             printf("%s  ", board[outIt][inIt]);
         }else {
              board[outIt][inIt] = even;
