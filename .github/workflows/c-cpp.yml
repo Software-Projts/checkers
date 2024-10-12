@@ -24,7 +24,8 @@ jobs:
     - name: Generate configure script
       run: | 
         autoreconf -i
-        echo "after autoreconf: "
+        automake --add-missing --copy --force-missing
+        echo "after autoreconf and automake: "
         ls -la
     - name: Set execute permissions
       run: chmod +x ./configure.ac
