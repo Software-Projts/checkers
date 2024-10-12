@@ -20,11 +20,11 @@ int main() {
 }
 
 char makeBoard(char piece, char even, char odd, int outIt, int inIt) {
-    if(j % 2 == 0) {
+    if(inIt % 2 == 0) {
         board[outIt][inIt] = even;
         printf("%c  ", board[outIt][inIt]);
     }else {
-        if(j != 7) {
+        if(inIt != 7) {
             board[outIt][inIt] = odd;
             printf("%c  ", board[outIt][inIt]);
         }else {
@@ -33,3 +33,4 @@ char makeBoard(char piece, char even, char odd, int outIt, int inIt) {
         }
     }
 }
+
