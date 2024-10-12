@@ -30,7 +30,7 @@ jobs:
     - name: Check PATH
       run: echo $PATH
     - name: configure
-      run: ./configure.ac
+      run: ./configure
     - name: make
       run: make
     - name: make check
