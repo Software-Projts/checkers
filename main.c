@@ -6,17 +6,17 @@ int main() {
     //Sets ups the board with pieces in place
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
-            //2, 4, 6, 8 rows
+            //0, 2, 4, 6 rows
             if(i % 2 == 0) {
-                if((i == 6) || (i == 8)) {
+                if((i == 6)) {
                     makeBoard('r', '2', i, j);
                 }else {
                     makeBoard('1', '2', i, j);
                 }
             // 1, 3, 5, 7 rows
              }else {
-                if(i == 7) {
-                    makeBoard('r', '1', i, j);
+                if((i == 7)||(i == 5)) {
+                    makeBoard('1', 'r', i, j);
                 }else {
                     makeBoard('2', '1', i, j);
                 }
