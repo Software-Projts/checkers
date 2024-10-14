@@ -6,6 +6,7 @@ int piecNumber = 1;
 char board[8][8];
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
+
 //Functions
 char makeBoard(char even, char odd, int outIt, int inIt);
 void printBoard();
@@ -54,7 +55,10 @@ int main() {
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
-            board[outIt][inIt] = odd;
+            pieceAndNum[0] = odd;
+            pieceAndNum[1] = '0' + j;
+            pieceAndNum[2] = "\0";
+            board[outIt][inIt][0] = pieceAndNum;
             printf("%c  ", board[outIt][inIt]);
         }else {
              board[outIt][inIt] = odd;
