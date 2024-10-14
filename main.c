@@ -5,7 +5,7 @@
 int piecNumber = 1;
 char board[8][8][4];
 char pieceAndNum[];
-int pieceNum;
+int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
 
@@ -51,20 +51,23 @@ int main() {
     }
     printf("\n");
     //printBoard();
-    turn();
+    //turn();
 }
 
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
-            pieceAndNum[0] = odd;
-            pieceAndNum[1] = '0' + inIt;
-            pieceAndNum[2] = '\0';
-            pieceAndNum[3] = '\0';
+            if(pieceAndNum > 10) {
+                pieceAndNum[0] = odd;
+                pieceAndNum[1] = '0' + pieceNum;
+                pieceAndNum[2] = '\0';
+                pieceAndNum[3] = '\0';
+            }
             //printf("Combine char %s", pieceAndNum);
             strcpy(board[outIt][inIt], pieceAndNum);
             //printf("In board array %s", board[outIt][inIt]);
             printf("%s  ", board[outIt][inIt]);
+            pieceAndNum++;
         }else {
              board[outIt][inIt][0] = odd;
             printf("%s", board[outIt][inIt]);
