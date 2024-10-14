@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 int piecNumber = 1;
-char board[8][8][4];
+char board[8][8];
 char pieceAndNum[];
 int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
@@ -56,42 +56,10 @@ int main() {
 
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
-        if(inIt != 7) {
-            if((odd == 'r')|| (odd == 'b')) {
-                pieceAndNum[0] = odd;
-                pieceAndNum[1] = '0' + pieceNum;
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                pieceNum++;
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }else {
-                pieceAndNum[0] = odd;
-                pieceAndNum[1] = ' ';
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }
-        }else {
-            board[outIt][inIt][0] = odd;
-        }
+        board[outIt][inIt] = odd;
     }else {
-        if(inIt != 7) {
-            if((even == 'r')|| (even == 'b')) {
-                pieceAndNum[0] = even;
-                pieceAndNum[1] = '0' + pieceNum;
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }else {
-                pieceAndNum[0] = even;
-                pieceAndNum[1] = ' ';
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }
-        }else {
-            board[outIt][inIt][0] = even;
-        }
+        board[outIt][inIt] = even;
+        
     }
 }
 
