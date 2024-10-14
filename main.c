@@ -69,10 +69,10 @@ void printBoard() //for printing the board after every turn (we can add the grap
     printf("\n");
     for(int i=0; i<8; i++)
     {
-        printf("%d  ", 8-i);
+        printf("%d      ", 8-i);
         for(int j=0; j<8;j++)
         {
-            printf("%c      ", board[i][j]);
+            printf("%c  ", board[i][j]);
         }
         printf("\n");
     }
