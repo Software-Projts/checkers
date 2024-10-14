@@ -3,7 +3,8 @@
 #include <string.h>
 #include <stdbool.h>
 int piecNumber = 1;
-char board[8][8];
+char board[8][8][];
+char pieceAndNum[];
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
 
@@ -143,12 +144,12 @@ void turn()
 void getUserInput(char input[])
     {
     printf("Please enter the location in the form LetterNumber (EX: a5): ");
-    scanf("%2s", &input);
+    scanf("%s", &input);
     printf("\nYou inputed: %s\n",input);
     while(!((input[0] >= 'a' && input[0] <= 'h') || (input[0] >= 'A' && input[0] <= 'H')) || !(input[1] >= '1' && input[1] <= '8'))
     {
         printf("Error please correct your input: ");
-        scanf("%2s", &input);
+        scanf("%s", &input);
         printf("\nYou inputed: %s\n",input);
     }
     }
