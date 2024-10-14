@@ -4,7 +4,6 @@
 #include <stdbool.h>
 int piecNumber = 1;
 char board[8][8];
-char pieceAndNum[];
 int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
