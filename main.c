@@ -3,8 +3,9 @@
 #include <string.h>
 #include <stdbool.h>
 int piecNumber = 1;
-char board[8][8][3];
+char board[8][8][4];
 char pieceAndNum[];
+int pieceNum;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
 
@@ -59,6 +60,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             pieceAndNum[0] = odd;
             pieceAndNum[1] = '0' + inIt;
             pieceAndNum[2] = '\0';
+            pieceAndNum[3] = '\0';
             //printf("Combine char %s", pieceAndNum);
             strcpy(board[outIt][inIt], pieceAndNum);
             //printf("In board array %s", board[outIt][inIt]);
