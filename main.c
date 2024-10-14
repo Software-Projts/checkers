@@ -58,11 +58,11 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
             pieceAndNum[0] = odd;
-            printf("PieceNum: %d\n", pieceNum);
+            //printf("PieceNum: %d\n", pieceNum);
             pieceAndNum[1] = '0' + pieceNum;
             pieceAndNum[2] = '\0';
             pieceAndNum[3] = '\0';
-            printf("PieceAndNum = %s\n", pieceAndNum);
+            //printf("PieceAndNum = %s\n", pieceAndNum);
             //pieceNum++;
             
             //printf("Combine char %s", pieceAndNum);
