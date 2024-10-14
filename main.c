@@ -64,7 +64,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             pieceAndNum[3] = '\0';
             printf("PieceAndNum = %s\n", pieceAndNum);
             //pieceNum++;
-            }
+            
             //printf("Combine char %s", pieceAndNum);
             strcpy(board[outIt][inIt], pieceAndNum);
             //printf("In board array %s", board[outIt][inIt]);
