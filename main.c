@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 int piecNumber = 1;
-char board[8][8][4];
+char board[8][8][3];
 char pieceAndNum[];
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
