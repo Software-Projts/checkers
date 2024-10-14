@@ -215,7 +215,16 @@ bool pieceCanMove(int i, int j, char playerT)
         printf("Has open spot to move!\n");
         return true;
     }
+        printf("Does not have open spot.\n");
+    }
+    if(playerT == 'r')
+    {
+    if((board[i-1][j-1] == '1') || (board[i-1][j+1] == '1') || ((board[i-1][j-1] == 'b') && (board[i-2][j-2] == '1')) || (board[i-1][j+1] == 'b') && (board[i-2][j+2] == '1'))
+    {
+        printf("Has open spot to move!\n");
+        return true;
     }
     printf("Does not have open spot.\n");
+    }
     return false;
 }
