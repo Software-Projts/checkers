@@ -50,7 +50,7 @@ int main() {
         printf("\n");
     }
     printf("\n");
-    //printBoard();
+    printBoard();
     //turn();
 }
 
@@ -142,8 +142,6 @@ void turn()
         printf("The value at this spot is: %c\n", board[i][j]);
         pieceCanMove(i, j, playerTurn);
     }
-    
-
         
     }
     else
