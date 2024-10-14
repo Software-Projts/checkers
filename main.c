@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 int piecNumber = 1;
-char board[8][8][4];
+char board[8][8];
 char pieceAndNum[];
 int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
@@ -27,7 +27,7 @@ int main() {
             //0, 2, 4, 6 rows
             if(i % 2 == 0) {
                 
-                if((i == 6)||(i == 0) || (i == 2)) {
+                if((i == 6)) {
                     makeBoard('r', '2', i, j);
                 }else if ((i==0)||(i==2)) {
                     makeBoard('b', '2', i, j);
@@ -36,7 +36,7 @@ int main() {
                 }
             // 1, 3, 5, 7 rows
              }else {
-                if((i == 7)||(i == 5)||(i == 1)) {
+                if((i == 7)||(i == 5)) {
                     makeBoard('2', 'r', i, j);
                 }else if(i==1) {
                     makeBoard('2', 'b', i, j);
@@ -56,54 +56,23 @@ int main() {
 
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
-        if(inIt != 7) {
-            if((odd == 'r')|| (odd == 'b')) {
-                pieceAndNum[0] = odd;
-                pieceAndNum[1] = '0' + pieceNum;
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }else {
-                pieceAndNum[0] = odd;
-                pieceAndNum[1] = ' ';
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }
-        }else {
-            board[outIt][inIt][0] = odd;
-        }
+        board[outIt][inIt] = odd;
     }else {
-        if(inIt != 7) {
-            if((even == 'r')|| (even == 'b')) {
-                pieceAndNum[0] = even;
-                pieceAndNum[1] = '0' + pieceNum;
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }else {
-                pieceAndNum[0] = even;
-                pieceAndNum[1] = ' ';
-                pieceAndNum[2] = '\0';
-                pieceAndNum[3] = '\0';
-                strcpy(board[outIt][inIt], pieceAndNum);
-            }
-        }else {
-            board[outIt][inIt][0] = even;
-        }
+        board[outIt][inIt] = even;
+        
     }
 }
 
 void printBoard() //for printing the board after every turn (we can add the graphics corresponding to values of the board later)
 {
-    printf("   a  b  c  d  e  f  g  h\n");
+    printf("        a  b  c  d  e  f  g  h\n");
     printf("\n");
     for(int i=0; i<8; i++)
     {
-        printf("%d  ", 8-i);
+        printf("%d      ", 8-i);
         for(int j=0; j<8;j++)
         {
-            printf("%s  ", board[i][j]);
+            printf("%c  ", board[i][j]);
         }
         printf("\n");
     }
@@ -228,3 +197,4 @@ bool pieceCanMove(int i, int j, char playerT)
     }
     return false;
 }
+
