@@ -65,7 +65,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
                 strcpy(board[outIt][inIt], pieceAndNum);
             }else {
                 pieceAndNum[0] = odd;
-                pieceAndNum[1] = '\0';
+                pieceAndNum[1] = ' ';
                 pieceAndNum[2] = '\0';
                 pieceAndNum[3] = '\0';
                 strcpy(board[outIt][inIt], pieceAndNum);
@@ -78,12 +78,12 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             if((even == 'r')|| (even == 'b')) {
                 pieceAndNum[0] = even;
                 pieceAndNum[1] = '0' + pieceNum;
-                pieceAndNum[2] = '\0';
+                pieceAndNum[2] = ' ';
                 pieceAndNum[3] = '\0';
                 strcpy(board[outIt][inIt], pieceAndNum);
             }else {
                 pieceAndNum[0] = even;
-                pieceAndNum[1] = '\0';
+                pieceAndNum[1] = ' ';
                 pieceAndNum[2] = '\0';
                 pieceAndNum[3] = '\0';
                 strcpy(board[outIt][inIt], pieceAndNum);
