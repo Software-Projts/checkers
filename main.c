@@ -49,7 +49,7 @@ int main() {
         printf("\n");
     }
     printf("\n");
-    printBoard();
+    //printBoard();
     turn();
 }
 
