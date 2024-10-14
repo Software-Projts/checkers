@@ -56,7 +56,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
             pieceAndNum[0] = odd;
-            pieceAndNum[1] = '0' + j;
+            pieceAndNum[1] = '0' + inIt;
             pieceAndNum[2] = "\0";
             board[outIt][inIt][0] = pieceAndNum;
             printf("%c  ", board[outIt][inIt]);
@@ -143,12 +143,12 @@ void turn()
 void getUserInput(char input[])
     {
     printf("Please enter the location in the form LetterNumber (EX: a5): ");
-    scanf("%2s", input);
+    scanf("%2s", &input);
     printf("\nYou inputed: %s\n",input);
     while(!((input[0] >= 'a' && input[0] <= 'h') || (input[0] >= 'A' && input[0] <= 'H')) || !(input[1] >= '1' && input[1] <= '8'))
     {
         printf("Error please correct your input: ");
-        scanf("%2s", input);
+        scanf("%2s", &input);
         printf("\nYou inputed: %s\n",input);
     }
     }
