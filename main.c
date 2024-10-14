@@ -78,7 +78,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             if((even == 'r')|| (even == 'b')) {
                 pieceAndNum[0] = even;
                 pieceAndNum[1] = '0' + pieceNum;
-                pieceAndNum[2] = ' ';
+                pieceAndNum[2] = '\0';
                 pieceAndNum[3] = '\0';
                 strcpy(board[outIt][inIt], pieceAndNum);
             }else {
@@ -215,17 +215,7 @@ bool pieceCanMove(int i, int j, char playerT)
         printf("Has open spot to move!\n");
         return true;
     }
-    printf("Does not have open spot.\n");
-    }
-    if(playerT == 'r')
-    {
-    if((board[i-1][j-1] == '1') || (board[i-1][j+1] == '1') || ((board[i-1][j-1] == 'b') && (board[i-2][j-2] == '1')) || (board[i-1][j+1] == 'b') && (board[i-2][j+2] == '1'))
-    {
-        printf("Has open spot to move!\n");
-        return true;
     }
     printf("Does not have open spot.\n");
-    }
     return false;
 }
-
