@@ -63,26 +63,34 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
                 pieceAndNum[2] = '\0';
                 pieceAndNum[3] = '\0';
                 strcpy(board[outIt][inIt], pieceAndNum);
-                printf("%s  ", board[outIt][inIt]);
             }else {
                 pieceAndNum[0] = odd;
                 pieceAndNum[1] = '\0';
                 pieceAndNum[2] = '\0';
                 pieceAndNum[3] = '\0';
                 strcpy(board[outIt][inIt], pieceAndNum);
-                printf("%s   ", board[outIt][inIt]);
             }
         }else {
-             board[outIt][inIt][0] = odd;
-            printf("%s", board[outIt][inIt]);
+            if((even == 'r')|| (even == 'b')) {
+                pieceAndNum[0] = even;
+                pieceAndNum[1] = '0' + pieceNum;
+                pieceAndNum[2] = '\0';
+                pieceAndNum[3] = '\0';
+                strcpy(board[outIt][inIt], pieceAndNum);
+            }else {
+                pieceAndNum[0] = even;
+                pieceAndNum[1] = '\0';
+                pieceAndNum[2] = '\0';
+                pieceAndNum[3] = '\0';
+                strcpy(board[outIt][inIt], pieceAndNum);
+            }
+            board[outIt][inIt][0] = odd;
         }
     }else {
         if(inIt != 7) {
             board[outIt][inIt][0] = even;
-            printf("%s  ", board[outIt][inIt]);
         }else {
             board[outIt][inIt][0] = even;
-            printf("%s", board[outIt][inIt]);
         }
     }
 }
