@@ -57,14 +57,17 @@ int main() {
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
-            pieceAndNum[0] = odd;
-            //printf("PieceNum: %d\n", pieceNum);
-            pieceAndNum[1] = '0' + pieceNum;
-            pieceAndNum[2] = '\0';
-            pieceAndNum[3] = '\0';
-            //printf("PieceAndNum = %s\n", pieceAndNum);
-            //pieceNum++;
-            
+            if(odd == 'r') {
+                pieceAndNum[0] = odd;
+                pieceAndNum[1] = '0' + pieceNum;
+                pieceAndNum[2] = '\0';
+                pieceAndNum[3] = '\0';
+            }else {
+                pieceAndNum[0] = odd;
+                pieceAndNum[1] = '\0';
+                pieceAndNum[2] = '\0';
+                pieceAndNum[3] = '\0';
+            }
             //printf("Combine char %s", pieceAndNum);
             strcpy(board[outIt][inIt], pieceAndNum);
             //printf("In board array %s", board[outIt][inIt]);
