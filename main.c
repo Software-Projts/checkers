@@ -65,14 +65,14 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
 
 void printBoard() //for printing the board after every turn (we can add the graphics corresponding to values of the board later)
 {
-    printf("   a  b  c  d  e  f  g  h\n");
+    printf("        a  b  c  d  e  f  g  h\n");
     printf("\n");
     for(int i=0; i<8; i++)
     {
         printf("%d  ", 8-i);
         for(int j=0; j<8;j++)
         {
-            printf("%c  ", board[i][j]);
+            printf("%c      ", board[i][j]);
         }
         printf("\n");
     }
