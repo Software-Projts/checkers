@@ -57,7 +57,7 @@ int main() {
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         if(inIt != 7) {
-            if(pieceAndNum > 10) {
+            if(pieceNum > 10) {
                 pieceAndNum[0] = odd;
                 pieceAndNum[1] = '0' + pieceNum;
                 pieceAndNum[2] = '\0';
