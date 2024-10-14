@@ -59,7 +59,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
         if(inIt != 7) {
             if(pieceNum > 10) {
                 pieceAndNum[0] = odd;
-                printf("PieceNum: %d\n", pieceNum)
+                printf("PieceNum: %d\n", pieceNum);
                 pieceAndNum[1] = '0' + pieceNum;
                 pieceAndNum[2] = '\0';
                 pieceAndNum[3] = '\0';
