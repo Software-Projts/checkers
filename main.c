@@ -59,7 +59,7 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
             pieceAndNum[0] = odd;
             pieceAndNum[1] = '0' + inIt;
             pieceAndNum[2] = '\0';
-            board[outIt][inIt][0] = pieceAndNum;
+            strcpy(board[outIt][inIt], pieceAndNum);
             printf("%c  ", board[outIt][inIt]);
         }else {
              board[outIt][inIt][0] = odd;
