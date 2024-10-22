@@ -53,6 +53,7 @@ int main() {
     //turn();
 }
 
+
 char makeBoard(char even, char odd, int outIt, int inIt) {
     if(inIt % 2 == 0) {
         board[outIt][inIt] = odd;
