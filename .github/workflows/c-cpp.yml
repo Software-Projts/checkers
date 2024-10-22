@@ -3,7 +3,6 @@ name: C/C++ CI
 on:
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +20,11 @@ jobs:
       
     - name: Set execute permissions
       run: chmod +x ./configure.ac
-      
+
+  name-check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: configure
       run: ./configure
       
