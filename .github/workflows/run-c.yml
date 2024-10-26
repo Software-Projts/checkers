@@ -21,4 +21,4 @@ jobs:
       run: gcc -o main main.c
 
     - name: Run C code
-      run: test-data.txt | ./main
+      run: ./main < test-data.txt
