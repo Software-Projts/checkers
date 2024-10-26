@@ -82,7 +82,7 @@ void turn()
 {
     if(playerTurn =='b')
     {
-        char *checkIn[];
+        char checkIn[2];
         printf("It's Black's turn!\n");
         printf("Please enter the piece you want to move.\n");
         scanf("%s", &checkIn);
