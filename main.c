@@ -82,8 +82,10 @@ void turn()
 {
     if(playerTurn =='b')
     {
+        char checkIn[2];
         printf("It's Black's turn!\n");
         printf("Please enter the piece you want to move.\n");
+        scanf("%s", &checkIn);
         char input[3]; //used for initial location
         //char input2[3]; //will be used for the end location later
         getUserInput(input);
