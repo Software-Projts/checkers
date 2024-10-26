@@ -59,7 +59,6 @@ char makeBoard(char even, char odd, int outIt, int inIt) {
         board[outIt][inIt] = odd;
     }else {
         board[outIt][inIt] = even;
-        
     }
 }
 
