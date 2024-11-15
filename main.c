@@ -4,6 +4,12 @@
 #include <stdbool.h>
 int piecNumber = 1;
 char board[8][8];
+//1 is a blank space
+//2 is a unusable
+//r is red(unkinged)
+//b is black(unkinged)
+//R is red King
+//B is black King
 int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
@@ -94,9 +100,9 @@ void turn()
         i= 7-(input[1]-'1');
         j = convertLetter(input[0]);
     //checks and makes user reinput
-    while((playerTurn == 'b') && (board[i][j] != 'b' || !(pieceCanMove(i, j, playerTurn))))
+    while((playerTurn == 'b') && (!(board[i][j] == 'b' ||board[i][j] == 'B')|| !(pieceCanMove(i, j, playerTurn))))
     {
-        if(board[i][j] != 'b' )
+        if(!(board[i][j] == 'b' || board[i][j] == 'B'))
         {
             printf("This is not your piece!\n");
             printf("The value at this spot is: %c\n", board[i][j]);
@@ -115,7 +121,7 @@ void turn()
             j = convertLetter(input[0]);
         }
     }
-    if((playerTurn == 'b') && board[i][j] == 'b')
+    if((playerTurn == 'b') && (board[i][j] == 'b' || board[i][j] == 'B'))
     {
         printf("This is your piece!\n");
         printf("The value at this spot is: %c\n", board[i][j]); // this is a check statement
@@ -185,10 +191,28 @@ bool pieceCanMove(int i, int j, char playerT)
 {
     if(playerT == 'b')
     {
-    if((board[i+1][j-1] == '1') || (board[i+1][j+1] == '1') || ((board[i+1][j-1] == 'r') && (board[i+2][j-2] == '1')) || (board[i+1][j+1] == 'r') && (board[i+2][j+2] == '1'))
+    if(board[i][j] == 'b'){
+        if((board[i+1][j-1] == '1') || (board[i+1][j+1] == '1') || 
+        (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
+        ((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+        {
+            printf("Has open spot to move!\n");
+            return true;
+        }
+    }
+    if(board[i][j] == 'B')
     {
-        printf("Has open spot to move!\n");
-        return true;
+        if((board[i+1][j-1] == '1') || (board[i+1][j+1] == '1') || 
+        (board[i-1][j-1] == '1') || (board[i-1][j+1] == '1') || //adds king backwards check
+        (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
+        ((board[i+1][j+1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j+2] == '1') ||
+        (((board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1')) || //adds king backwards jump check
+        ((board[i-1][j+1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j+2] == '1')) //^
+        {
+            printf("How open spot to move!\n");
+            return true;
+        }
+        
     }
         printf("Does not have open spot.\n");
     }
