@@ -79,20 +79,22 @@ void printBoard() //for printing the board after every turn (we can add the grap
 }
 
 void turn()
-{
+{   int i = -1;
+    int j = -1;
     if(playerTurn =='b')
     {
-        char checkIn[2];
+        //char checkIn[2];
         printf("It's Black's turn!\n");
         printf("Please enter the piece you want to move.\n");
-        scanf("%s", &checkIn);
+        //scanf("%2s", checkIn);
         char input[3]; //used for initial location
+        char input2[3];
         //char input2[3]; //will be used for the end location later
         getUserInput(input);
-        int i= 7-(input[1]-'1');
-        int j = convertLetter(input[0]);
+        i= 7-(input[1]-'1');
+        j = convertLetter(input[0]);
     //checks and makes user reinput
-    while(board[i][j] != 'b' || !(pieceCanMove(i, j, playerTurn)))
+    while((playerTurn == 'b') && (board[i][j] != 'b' || !(pieceCanMove(i, j, playerTurn))))
     {
         if(board[i][j] != 'b' )
         {
@@ -113,12 +115,15 @@ void turn()
             j = convertLetter(input[0]);
         }
     }
-    if(board[i][j] == 'b')
+    if((playerTurn == 'b') && board[i][j] == 'b')
     {
         printf("This is your piece!\n");
-        printf("The value at this spot is: %c\n", board[i][j]);
-        pieceCanMove(i, j, playerTurn);
+        printf("The value at this spot is: %c\n", board[i][j]); // this is a check statement
+        pieceCanMove(i, j, playerTurn); // this is redundant
+        printf("Where would you like to move?");
+        
     }
+
         
     }
     else
@@ -130,12 +135,12 @@ void turn()
 void getUserInput(char input[])
     {
     printf("Please enter the location in the form LetterNumber (EX: a5): ");
-    scanf("%s", &input);
+    scanf("%2s", input);
     printf("\nYou inputed: %s\n",input);
     while(!((input[0] >= 'a' && input[0] <= 'h') || (input[0] >= 'A' && input[0] <= 'H')) || !(input[1] >= '1' && input[1] <= '8'))
     {
         printf("Error please correct your input: ");
-        scanf("%s", &input);
+        scanf("%2s", input);
         printf("\nYou inputed: %s\n",input);
     }
     }
