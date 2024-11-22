@@ -125,9 +125,114 @@ void turn()
     {
         printf("This is your piece!\n");
         printf("The value at this spot is: %c\n", board[i][j]); // this is a check statement
-        pieceCanMove(i, j, playerTurn); // this is redundant
+        //pieceCanMove(i, j, playerTurn); // this is redundant
         printf("Where would you like to move?");
-        
+        printf("It gets to right before input2");
+        getUserInput(input2);
+        int i2= 7-(input2[1]-'1');
+        int j2= convertLetter(input2[0]);
+        int doubleJump = 0;
+        int validMove = 0;
+        //take piece if statements
+        if(board[i][j] == 'b')
+        {
+            if(board[i+1][j-1] == '1')
+            {
+                if((i2 == i+1) && (j2 == j-1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'b';
+                    int validMove = 1; 
+                }
+            }
+            else if((board[i+1][j+1] == '1'))
+            {
+                if((i2 == i+1) && (j2 == j+1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'b';
+                    int validMove = 1;
+                }
+            }
+            else if((((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
+            {
+                if((i2 == i+2) && (j2 == j-2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j-1] = '1';
+                    board[i+2][j-2] = 'b';
+                    int validMove = 1;
+                    int doubleJump = 1;
+                }
+            }
+            else if(((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+            {
+               if((i2 == i+2) && (j2 == j+2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j+1] = '1';
+                    board[i+2][j+2] = 'b';
+                    int validMove = 1;
+                    int doubleJump = 1;
+                } 
+            }
+            while (validMove != 1)
+            {
+                printf("please input a valid move!");
+                getUserInput(input2);
+                i2= 7-(input2[1]-'1');
+                j2= convertLetter(input2[0]);
+                doubleJump = 0;
+                validMove = 0;
+                //take piece if statements
+                if(board[i][j] == 'b')
+                {
+                    if(board[i+1][j-1] == '1')
+                    {
+                        if((i2 == i+1) && (j2 == j-1))
+                        {
+                            board[i][j] = '1';
+                            board[i2][j2] = 'b';
+                            int validMove = 1; 
+                        }
+                    }
+                    else if((board[i+1][j+1] == '1'))
+                    {
+                        if((i2 == i+1) && (j2 == j+1))
+                        {
+                            board[i][j] = '1';
+                            board[i2][j2] = 'b';
+                            int validMove = 1;
+                        }
+                    }
+            else if((((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
+            {
+                if((i2 == i+2) && (j2 == j-2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j-1] = '1';
+                    board[i+2][j-2] = 'b';
+                    int validMove = 1;
+                    int doubleJump = 1;
+                }
+            }
+            else if(((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+            {
+               if((i2 == i+2) && (j2 == j+2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j+1] = '1';
+                    board[i+2][j+2] = 'b';
+                    int validMove = 1;
+                    int doubleJump = 1;
+                } 
+            }
+            }
+        }
+        else if(board[i][j] == 'B')
+        {
+            
+        }
     }
 
         
@@ -140,6 +245,7 @@ void turn()
 }
 void getUserInput(char input[])
     {
+    printf("GettingUserInput");
     printf("Please enter the location in the form LetterNumber (EX: a5): ");
     scanf("%2s", input);
     printf("\nYou inputed: %s\n",input);
@@ -209,7 +315,7 @@ bool pieceCanMove(int i, int j, char playerT)
         (((board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1')) || //adds king backwards jump check
         ((board[i-1][j+1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j+2] == '1')) //^
         {
-            printf("How open spot to move!\n");
+            printf("Has open spot to move!\n");
             return true;
         }
         
@@ -226,5 +332,4 @@ bool pieceCanMove(int i, int j, char playerT)
     printf("Does not have open spot.\n");
     }
     return false;
-}
-
+}  
