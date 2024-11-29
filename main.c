@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 int piecNumber = 1;
 char board[8][8];
 //1 is a blank space
@@ -21,6 +22,8 @@ void turn();
 void getUserInput();
 int convertLetter(char a);
 bool pieceCanMove(int row, int col, char playerT);
+char getYesOrNo();
+bool isWithinBounds(int row, int col);
 
 //Main function
 int main() {
@@ -138,10 +141,10 @@ void turn()
         if(board[i][j] == 'b')
         {
             printf("The value at %s is: %c\n", input2, board[i2][j2]);
-            printf("I2: %d\n", i2);
-            printf("i+1: %d\n", i+1);
-            printf("J2: %d\n", j2);
-            printf("J+1: %d\n", j+1);
+            //printf("I2: %d\n", i2);
+            //printf("i+1: %d\n", i+1);
+            //printf("J2: %d\n", j2);
+            //printf("J+1: %d\n", j+1);
             if(board[i2][j2] == '1')
             {
                 if((i2 == i+1) && (j2 == j-1))
@@ -149,24 +152,24 @@ void turn()
                     board[i][j] = '1';
                     board[i2][j2] = 'b';
                     validMove = 1; 
-                    printf("I'm here it worked u saved me");
+                    //printf("I'm here it worked u saved me");
                 }
                 else
                 {
                     //this is empty !!!
                 }
             }
-            if((board[i+1][j+1] == '1'))    // make sure to get rid of the elses to fix the rest of the shit.
+            if((isWithinBounds(i+1, j+1)) && (board[i+1][j+1] == '1'))    // make sure to get rid of the elses to fix the rest of the shit.
             {
                 if((i2 == i+1) && (j2 == j+1))
                 {
                     board[i][j] = '1';
                     board[i2][j2] = 'b';
                     validMove = 1;
-                    printf("I'm here it worked u saved me");
+                    //printf("I'm here it worked u saved me");
                 }
             }
-            else if((((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
+            if(((isWithinBounds(i+1, j-1) && (isWithinBounds(i+2, j-2)))) &&(((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
             {
                 if((i2 == i+2) && (j2 == j-2))
                 {
@@ -177,7 +180,7 @@ void turn()
                     doubleJump = 1;
                 }
             }
-            else if(((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+            if((isWithinBounds(i+1, j+1) && (isWithinBounds(i+2, j+2))) && ((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
             {
                if((i2 == i+2) && (j2 == j+2))
                 {
@@ -201,7 +204,7 @@ void turn()
                 //take piece if statements
                 if(board[i][j] == 'b')
                 {
-                    if(board[i+1][j-1] == '1')
+                    if((isWithinBounds(i+1, j-1)) && board[i+1][j-1] == '1')
                     {
                         if((i2 == i+1) && (j2 == j-1))
                         {
@@ -210,7 +213,7 @@ void turn()
                             validMove = 1; 
                         }
                     }
-                    else if((board[i+1][j+1] == '1'))
+                    if((isWithinBounds(i+1, j+1)) && (board[i+1][j+1] == '1'))
                     {
                         if((i2 == i+1) && (j2 == j+1))
                         {
@@ -219,7 +222,7 @@ void turn()
                             validMove = 1;
                         }
                     }
-            else if((((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
+            if((isWithinBounds(i+1, j-1) && (isWithinBounds(i+2, j-2))) && (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
             {
                 if((i2 == i+2) && (j2 == j-2))
                 {
@@ -230,7 +233,7 @@ void turn()
                     doubleJump = 1;
                 }
             }
-            else if(((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+            if((isWithinBounds(i+1, j+1) && (isWithinBounds(i+2, j+2))) && ((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
             {
                if((i2 == i+2) && (j2 == j+2))
                 {
@@ -243,9 +246,240 @@ void turn()
             }
             }
         }
+printBoard();
         }
-        else if(board[i][j] == 'B')
+//printBoard after validMOVE
+
+
+
+
+//IMPORTANT DISTINCTION 
+//ABOVE WAS THE UNKINGED black,  BELOW IS KINGED BLACK
+
+        if(board[i][j] == 'B') // the first step is to replace 'b' with 'B'
         {  
+        
+            printf("The value at %s is: %c\n", input2, board[i2][j2]);
+            //printf("I2: %d\n", i2);
+            //printf("i+1: %d\n", i+1);
+            //printf("J2: %d\n", j2);
+            //printf("J+1: %d\n", j+1);
+            if(board[i2][j2] == '1')
+            {
+                if((i2 == i+1) && (j2 == j-1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'B';
+                    validMove = 1; 
+                    //printf("I'm here it worked u saved me");
+                }
+                else
+                {
+                    //this is empty !!!
+                }
+            }
+            if(isWithinBounds(i+1,j+1) && (board[i+1][j+1] == '1'))    // make sure to get rid of the elses to fix the rest of the shit.
+            {
+                if((i2 == i+1) && (j2 == j+1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'B';
+                    validMove = 1;
+                    //printf("I'm here it worked u saved me");
+                }
+            }
+//these next two if statements are for the BLACK KING specificially (move back 1)
+if(isWithinBounds(i-1,j-1) && board[i-1][j-1]== '1')
+{
+    if((i2 == i-1) && (j2 == j-1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'B';
+                    validMove = 1; 
+                }
+}
+if(isWithinBounds(i-1,j+1) && board[i-1][j+1]== '1')
+{
+    if((i2 == i-1) && (j2 == j+1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'B';
+                    validMove = 1; 
+                }
+}
+//end of king backwards by 1 move statements
+            if(isWithinBounds(i+1,j-1) && isWithinBounds(i+2,j-2) && (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
+            {
+                if((i2 == i+2) && (j2 == j-2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j-1] = '1';
+                    board[i+2][j-2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                }
+            }
+            if(isWithinBounds(i+1,j+1) && isWithinBounds(i+1,j+2) && ((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+            {
+               if((i2 == i+2) && (j2 == j+2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j+1] = '1';
+                    board[i+2][j+2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                } 
+            }
+//start of king backwards by 2 move statements
+if(isWithinBounds(i-1,j-1) && isWithinBounds(i-2,j-2) && (((board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1')))
+            {
+                if((i2 == i-2) && (j2 == j-2))
+                {
+                    board[i][j] = '1';
+                    board[i-1][j-1] = '1';
+                    board[i-2][j-2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                }
+            }
+if(isWithinBounds(i-1,j+1) && isWithinBounds(i-2,j+2) && ((board[i-1][j+1] == 'r') || (board[i-1][j+1] == 'R')) && (board[i-2][j+2] == '1'))
+            {
+               if((i2 == i-2) && (j2 == j+2))
+                {
+                    board[i][j] = '1';
+                    board[i-1][j+1] = '1';
+                    board[i-2][j+2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                } 
+            }
+//end of king backwards by 2 move statements
+            while (validMove == 0)
+            {
+                printf("please input a valid move!\n");
+                printf("The value at %s is: %c", input2, board[i2][j2]);
+                getUserInput(input2);
+                i2= 7-(input2[1]-'1');
+                j2= convertLetter(input2[0]);
+                printf("The value at %s is: %c", input2, board[i2][j2]);
+                doubleJump = 0;
+                validMove = 0;
+                //take piece if statements
+                if(board[i][j] == 'B')
+                {
+                    if(isWithinBounds(i+1,j-1) && board[i+1][j-1] == '1')
+                    {
+                        if((i2 == i+1) && (j2 == j-1))
+                        {
+                            board[i][j] = '1';
+                            board[i2][j2] = 'B';
+                            validMove = 1; 
+                        }
+                    }
+                    if(isWithinBounds(i+1,j+1) && (board[i+1][j+1] == '1'))
+                    {
+                        if((i2 == i+1) && (j2 == j+1))
+                        {
+                            board[i][j] = '1';
+                            board[i2][j2] = 'B';
+                            validMove = 1;
+                        }
+                    }
+//these next two if statements are for the BLACK KING specificially (move back 1)
+if(isWithinBounds(i-1,j-1) && board[i-1][j-1]== '1')
+{
+    if((i2 == i-1) && (j2 == j-1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'B';
+                    validMove = 1; 
+                }
+}
+if(isWithinBounds(i-1,j+1) && board[i-1][j+1]== '1')
+{
+    if((i2 == i-1) && (j2 == j+1))
+                {
+                    board[i][j] = '1';
+                    board[i2][j2] = 'B';
+                    validMove = 1; 
+                }
+}
+//end of king backwards by 1 move statements
+            if(isWithinBounds(i+1,j-1) && isWithinBounds(i+2,j-2) && (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')))
+            {
+                if((i2 == i+2) && (j2 == j-2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j-1] = '1';
+                    board[i+2][j-2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                }
+            }
+            if(isWithinBounds(i+1,j+1) && isWithinBounds(i+2,j+2) && ((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+            {
+               if((i2 == i+2) && (j2 == j+2))
+                {
+                    board[i][j] = '1';
+                    board[i+1][j+1] = '1';
+                    board[i+2][j+2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                } 
+            }
+            //start of king backwards by 2 move statements
+if(isWithinBounds(i-1,j-1) && isWithinBounds(i-2,j-2) && (((board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1')))
+            {
+                if((i2 == i-2) && (j2 == j-2))
+                {
+                    board[i][j] = '1';
+                    board[i-1][j-1] = '1';
+                    board[i-2][j-2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                }
+            }
+if(isWithinBounds(i-1,j+1) && isWithinBounds(i-2,j+2) && ((board[i-1][j+1] == 'r') || (board[i-1][j+1] == 'R')) && (board[i-2][j+2] == '1'))
+            {
+               if((i2 == i-2) && (j2 == j+2))
+                {
+                    board[i][j] = '1';
+                    board[i-1][j+1] = '1';
+                    board[i-2][j+2] = 'B';
+                    validMove = 1;
+                    doubleJump = 1;
+                } 
+            }
+//end of king backwards by 2 move statements
+            }
+        }
+        //end of the validMove while statement
+printBoard();
+
+        //next is the doubleJump
+        if(doubleJump == 1)
+        {
+            char YorN = getYesOrNo();
+            if(YorN == 'n')
+            {
+                doubleJump = 0;
+            }
+            while(doubleJump == 1)
+            {
+                i = i2;
+                j = j2;
+                //check if the piece can jump over any other pieces.
+                int validMoreJump = 0;
+                if(board[i][j] = 'b')
+                {
+                    {
+                        //
+                    }
+                }
+
+            }
+        }
+        
         }
     
 
@@ -313,9 +547,9 @@ bool pieceCanMove(int i, int j, char playerT)
     if(playerT == 'b')
     {
     if(board[i][j] == 'b'){
-        if((board[i+1][j-1] == '1') || (board[i+1][j+1] == '1') || 
-        (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
-        ((board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
+        if((isWithinBounds(i+1, j-1) && (board[i+1][j-1] == '1')) || (isWithinBounds(i+1, j+1) && (board[i+1][j+1] == '1')) || 
+        ((isWithinBounds(i+1, j-1) && isWithinBounds(i+2, j-2)) &&((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
+        ((isWithinBounds(i+1, j+1) && isWithinBounds(i+2, j+2)) && (board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
         {
             printf("Has open spot to move!\n");
             return true;
@@ -323,12 +557,13 @@ bool pieceCanMove(int i, int j, char playerT)
     }
     if(board[i][j] == 'B')
     {
-        if((board[i+1][j-1] == '1') || (board[i+1][j+1] == '1') || 
-        (board[i-1][j-1] == '1') || (board[i-1][j+1] == '1') || //adds king backwards check
-        (((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
-        ((board[i+1][j+1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j+2] == '1') ||
-        (((board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1')) || //adds king backwards jump check
-        ((board[i-1][j+1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j+2] == '1')) //^
+        if(
+        (isWithinBounds(i+1, j-1) && (board[i+1][j-1] == '1')) || (isWithinBounds(i+1, j+1) && (board[i+1][j+1] == '1')) || 
+        (isWithinBounds(i-1, j-1) && board[i-1][j-1] == '1') || (isWithinBounds(i-1, j+1) && (board[i-1][j+1] == '1')) || //adds king backwards check
+        ((isWithinBounds(i+1, j-1) && isWithinBounds(i+2, j-2)) && ((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
+        ((isWithinBounds(i+1, j+1) && isWithinBounds(i+2, j+2)) && (board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1') ||
+        ((isWithinBounds(i-1, j-1) && isWithinBounds(i-2, j-2)) && (board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1') || //adds king backwards jump check
+        ((isWithinBounds(i-1, j+1) && isWithinBounds(i-2, j+2)) && (board[i-1][j+1] == 'r') || (board[i-1][j+1] == 'R')) && (board[i-2][j+2] == '1') ) //^
         {
             printf("Has open spot to move!\n");
             return true;
@@ -348,3 +583,29 @@ bool pieceCanMove(int i, int j, char playerT)
     }
     return false;
 }  
+
+
+// Function to get a valid 'y' or 'n' character from the user
+char getYesOrNo() {
+    char userInput;
+    while (1) 
+    {
+        printf("Please enter 'y' or 'n': ");
+        scanf(" %c", &userInput); // The space before %c ignores any leading whitespace
+        // Convert to lowercase to handle 'Y' or 'N'
+        userInput = tolower(userInput);
+        if (userInput == 'y' || userInput == 'n') 
+        {
+            return userInput; // Valid input
+        } 
+        else 
+        {
+            printf("Invalid input. ");
+        }
+    }
+}
+
+bool isWithinBounds(int row, int col) 
+{
+    return (row >= 0) && (row < 8) && (col >= 0) && (col < 8);
+}
