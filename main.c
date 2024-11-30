@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
-int piecNumber = 1;
 char board[8][8];
 //1 is a blank space
 //2 is a unusable
@@ -24,6 +23,8 @@ int convertLetter(char a);
 bool pieceCanMove(int row, int col, char playerT);
 char getYesOrNo();
 bool isWithinBounds(int row, int col);
+bool HasAnyLegalMoves(char playerT);
+void TheKinging();
 
 //Main function
 int main() {
@@ -59,8 +60,11 @@ int main() {
     }
     printf("\n");
     printBoard();
+    while(HasAnyLegalMoves(playerTurn))
+    {
     turn();
-    turn();
+    }
+    
 }
 
 
@@ -196,11 +200,11 @@ void turn()
                 while (validMove == 0)
                 {
                     printf("please input a valid move!\n");
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     getUserInput(input2);
                     i2= 7-(input2[1]-'1');
                     j2= convertLetter(input2[0]);
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     doubleJump = 0;
                     validMove = 0;
                     //take piece if statements
@@ -248,6 +252,7 @@ void turn()
                         }
                     }
                 }
+            TheKinging();
             printBoard();
             }
             //printBoard after validMOVE
@@ -359,11 +364,11 @@ void turn()
                 while (validMove == 0)
                 {
                     printf("please input a valid move!\n");
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     getUserInput(input2);
                     i2= 7-(input2[1]-'1');
                     j2= convertLetter(input2[0]);
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     doubleJump = 0;
                     validMove = 0;
                     //take piece if statements
@@ -455,6 +460,7 @@ void turn()
                         //end of king backwards by 2 move statements
                     }
                 }
+                TheKinging();
                 printBoard();
             }
                     //end of the validMove while statement
@@ -554,11 +560,11 @@ void turn()
                         while(validMove == 0)
                         {
                             printf("please input a valid move!\n");
-                            //printf("The value at %s is: %c", input2, board[i2][j2]);
+                            //printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             getUserInput(input2);
                             i2= 7-(input2[1]-'1');
                             j2= convertLetter(input2[0]);
-                            printf("The value at %s is: %c", input2, board[i2][j2]);
+                            printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             doubleJump = 0;
                             validMove = 0;
                             //take piece if statements
@@ -648,11 +654,11 @@ void turn()
                         while (validMove == 0)
                         {
                             printf("please input a valid move!\n");
-                            printf("The value at %s is: %c", input2, board[i2][j2]);
+                            printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             getUserInput(input2);
                             i2= 7-(input2[1]-'1');
                             j2= convertLetter(input2[0]);
-                            printf("The value at %s is: %c", input2, board[i2][j2]);
+                            printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             doubleJump = 0;
                             validMove = 0;
                             //take piece if statements
@@ -707,6 +713,7 @@ void turn()
                             }
                         }
                     }
+                    TheKinging();
                     printBoard();
                 }
             
@@ -825,11 +832,11 @@ void turn()
                 while (validMove == 0)
                 {
                     printf("please input a valid move!\n");
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     getUserInput(input2);
                     i2= 7-(input2[1]-'1');
                     j2= convertLetter(input2[0]);
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     doubleJump = 0;
                     validMove = 0;
                     //take piece if statements
@@ -877,6 +884,7 @@ void turn()
                         }
                     }
                 }
+            TheKinging();
             printBoard();
             }
             //printBoard after validMOVE
@@ -988,11 +996,11 @@ void turn()
                 while (validMove == 0)
                 {
                     printf("please input a valid move!\n");
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     getUserInput(input2);
                     i2= 7-(input2[1]-'1');
                     j2= convertLetter(input2[0]);
-                    printf("The value at %s is: %c", input2, board[i2][j2]);
+                    printf("The value at %s is: %c\n", input2, board[i2][j2]);
                     doubleJump = 0;
                     validMove = 0;
                     //take piece if statements
@@ -1084,6 +1092,7 @@ void turn()
                         //end of king backwards by 2 move statements
                     }
                 }
+                TheKinging();
                 printBoard();
             }
                     //end of the validMove while statement
@@ -1183,11 +1192,11 @@ void turn()
                         while(validMove == 0)
                         {
                             printf("please input a valid move!\n");
-                            //printf("The value at %s is: %c", input2, board[i2][j2]);
+                            //printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             getUserInput(input2);
                             i2= 7-(input2[1]-'1');
                             j2= convertLetter(input2[0]);
-                            printf("The value at %s is: %c", input2, board[i2][j2]);
+                            printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             doubleJump = 0;
                             validMove = 0;
                             //take piece if statements
@@ -1277,11 +1286,11 @@ void turn()
                         while (validMove == 0)
                         {
                             printf("please input a valid move!\n");
-                            printf("The value at %s is: %c", input2, board[i2][j2]);
+                            printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             getUserInput(input2);
                             i2= 7-(input2[1]-'1');
                             j2= convertLetter(input2[0]);
-                            printf("The value at %s is: %c", input2, board[i2][j2]);
+                            printf("The value at %s is: %c\n", input2, board[i2][j2]);
                             doubleJump = 0;
                             validMove = 0;
                             //take piece if statements
@@ -1336,6 +1345,7 @@ void turn()
                             }
                         }
                     }
+                    TheKinging(); 
                     printBoard();
                 }
             
@@ -1420,7 +1430,7 @@ bool pieceCanMove(int i, int j, char playerT)
         ((isWithinBounds(i+1, j-1) && isWithinBounds(i+2, j-2)) &&((board[i+1][j-1] == 'r') || (board[i+1][j-1] == 'R')) && (board[i+2][j-2] == '1')) || 
         ((isWithinBounds(i+1, j+1) && isWithinBounds(i+2, j+2)) && (board[i+1][j+1] == 'r') || (board[i+1][j+1] == 'R')) && (board[i+2][j+2] == '1'))
         {
-            printf("Has open spot to move!\n");
+            //printf("Has open spot to move!\n");
             return true;
         }
     }
@@ -1434,12 +1444,12 @@ bool pieceCanMove(int i, int j, char playerT)
         ((isWithinBounds(i-1, j-1) && isWithinBounds(i-2, j-2)) && (board[i-1][j-1] == 'r') || (board[i-1][j-1] == 'R')) && (board[i-2][j-2] == '1') || //adds king backwards jump check
         ((isWithinBounds(i-1, j+1) && isWithinBounds(i-2, j+2)) && (board[i-1][j+1] == 'r') || (board[i-1][j+1] == 'R')) && (board[i-2][j+2] == '1') ) //^
         {
-            printf("Has open spot to move!\n");
+            //printf("Has open spot to move!\n");
             return true;
         }
         
     }
-        printf("Does not have open spot.\n");
+        //printf("Does not have open spot (B).\n");
     }
     if(playerT == 'r')
     {
@@ -1448,7 +1458,7 @@ bool pieceCanMove(int i, int j, char playerT)
         ((isWithinBounds(i-1, j-1) && isWithinBounds(i-2, j-2)) &&((board[i-1][j-1] == 'b') || (board[i-1][j-1] == 'B')) && (board[i-2][j-2] == '1')) || 
         ((isWithinBounds(i-1, j+1) && isWithinBounds(i-2, j+2)) && (board[i-1][j+1] == 'b') || (board[i-1][j+1] == 'B')) && (board[i-2][j+2] == '1'))
         {
-            printf("Has open spot to move!\n");
+            //printf("Has open spot to move!\n");
             return true;
         }
     }
@@ -1462,12 +1472,12 @@ bool pieceCanMove(int i, int j, char playerT)
         ((isWithinBounds(i-1, j-1) && isWithinBounds(i-2, j-2)) && (board[i-1][j-1] == 'b') || (board[i-1][j-1] == 'B')) && (board[i-2][j-2] == '1') || //adds king backwards jump check
         ((isWithinBounds(i-1, j+1) && isWithinBounds(i-2, j+2)) && (board[i-1][j+1] == 'b') || (board[i-1][j+1] == 'B')) && (board[i-2][j+2] == '1') ) //^
         {
-            printf("Has open spot to move!\n");
+            //printf("Has open spot to move!\n");
             return true;
         }
         
     }
-        printf("Does not have open spot.\n");
+        //printf("Does not have open spot(R).\n");
     }
     return false;
 }  
@@ -1496,4 +1506,34 @@ char getYesOrNo() {
 bool isWithinBounds(int row, int col) 
 {
     return (row >= 0) && (row < 8) && (col >= 0) && (col < 8);
+}
+
+bool HasAnyLegalMoves(char playerT)
+{   bool yesOrNo = false;
+
+        for(int i =0;i<8;i++)
+        {
+            for(int j = 0; j<8; j++)
+            {
+                if(pieceCanMove(i,j,playerT))
+                {
+                    yesOrNo = true;
+                }
+            }
+        }
+    return yesOrNo;  
+}
+void TheKinging()
+{
+    for(int i = 0;i<8;i++)
+    {
+        if(board[0][i] == 'r')
+        {
+            board[0][i] = 'R';
+        }
+        if(board[7][i] == 'b')
+        {
+            board[7][i] = 'B';
+        }
+    }
 }
