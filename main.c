@@ -64,6 +64,14 @@ int main() {
     {
     turn();
     }
+    if(playerTurn == 'r')
+    {
+        printf("Congratulations Black you win!");
+    }
+    if(playerTurn == 'b')
+    {
+        printf("Congratulations Red you win!");
+    }
     
 }
 
