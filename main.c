@@ -13,6 +13,7 @@ char board[8][8];
 int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
+int gone = 0;
 
 //Functions
 char makeBoard(char even, char odd, int outIt, int inIt);
@@ -25,6 +26,7 @@ char getYesOrNo();
 bool isWithinBounds(int row, int col);
 bool HasAnyLegalMoves(char playerT);
 void TheKinging();
+bool surrender();
 
 //Main function
 int main() {
@@ -102,12 +104,19 @@ void printBoard() //for printing the board after every turn (we can add the grap
 
 void turn()
 {  
+    bool done;
     int i = -1;
     int j = -1;
     if(playerTurn =='b')
     {
+            gone++;
             //char checkIn[2];
             printf("It's Black's turn!\n");
+            done = surrender(gone);
+            if(done == true) {
+                printf("Black resigned.\nRed wins!");
+                exit(0);
+            }
             printf("Please enter the piece you want to move.\n");
             //scanf("%2s", checkIn);
             char input[3]; //used for initial location
@@ -739,6 +748,11 @@ void turn()
     {
         printf("It's Red's turn!\n");
         {
+            done = surrender(gone);
+            if(done == true) {
+                printf("Red resigns.\nBlack wins!");
+                exit(0);
+            }
             //char checkIn[2];
             printf("Please enter the piece you want to move.\n");
             //scanf("%2s", checkIn);
@@ -1381,7 +1395,7 @@ void turn()
 
 void getUserInput(char input[])
     {
-    printf("GettingUserInput(IS INSIDE OF GETUSERINPUT FUNCTION)\n");
+    //printf("GettingUserInput(IS INSIDE OF GETUSERINPUT FUNCTION)\n");
     printf("Please enter the location in the form LetterNumber (EX: a5): ");
     scanf("%2s", input);
     printf("\nYou inputed: %s\n",input);
@@ -1496,6 +1510,7 @@ char getYesOrNo() {
     char userInput;
     while (1) 
     {
+        printf("Would you like to double jump?:\n ");
         printf("Please enter 'y' or 'n': ");
         scanf(" %c", &userInput); // The space before %c ignores any leading whitespace
         // Convert to lowercase to handle 'Y' or 'N'
@@ -1543,5 +1558,23 @@ void TheKinging()
         {
             board[7][i] = 'B';
         }
+    }
+}
+
+bool surrender(int turn) {
+    char yn;
+    if(!(turn >=5)) {
+        return false;
+    } else {
+       printf("Would you like to surrender?(y or n): ");
+       scanf(" %c", &yn);
+       if(yn != 'y' && yn != 'n') {
+        printf("Try again");
+        return surrender(turn);
+       } else if(yn == 'y') {
+            return true;
+       }else {
+            return false;
+       }
     }
 }
