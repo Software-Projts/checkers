@@ -13,7 +13,8 @@ char board[8][8];
 int pieceNum = 1;
 char playerTurn; //will hold 'b' or 'r' for whoevers turn in currently is
 //add [] to board
-int gone = 0;
+int gone = -1;
+bool done = false;
 
 //Functions
 char makeBoard(char even, char odd, int outIt, int inIt);
@@ -27,9 +28,14 @@ bool isWithinBounds(int row, int col);
 bool HasAnyLegalMoves(char playerT);
 void TheKinging();
 bool surrender();
+char playAgain(int turn);
 
 //Main function
 int main() {
+
+    while(playAgain(gone) == 'y') {
+    done = false;
+    gone = 0;
     //Sets black to have the first turn
     playerTurn = 'b';
     //Sets ups the board with pieces in place
@@ -62,18 +68,19 @@ int main() {
     }
     printf("\n");
     printBoard();
-    while(HasAnyLegalMoves(playerTurn))
+    while(HasAnyLegalMoves(playerTurn) && !done)
     {
     turn();
     }
     if(playerTurn == 'r')
     {
-        printf("Congratulations Black you win!");
+        printf("Congratulations Black you win!\n");
     }
     if(playerTurn == 'b')
     {
-        printf("Congratulations Red you win!");
+        printf("Congratulations Red you win!\n");
     }
+}
     
 }
 
@@ -104,7 +111,7 @@ void printBoard() //for printing the board after every turn (we can add the grap
 
 void turn()
 {  
-    bool done;
+    
     int i = -1;
     int j = -1;
     if(playerTurn =='b')
@@ -114,8 +121,9 @@ void turn()
             printf("It's Black's turn!\n");
             done = surrender(gone);
             if(done == true) {
-                printf("Black resigned.\nRed wins!");
-                exit(0);
+                printf("Black resigned.\n");
+                gone = 0;
+                return;
             }
             printf("Please enter the piece you want to move.\n");
             //scanf("%2s", checkIn);
@@ -749,9 +757,10 @@ void turn()
         printf("It's Red's turn!\n");
         {
             done = surrender(gone);
-            if(done == true) {
-                printf("Red resigns.\nBlack wins!");
-                exit(0);
+             if(done == true) {
+                printf("Red resigned.\n");
+                gone = 0;
+                return;
             }
             //char checkIn[2];
             printf("Please enter the piece you want to move.\n");
@@ -1572,9 +1581,24 @@ bool surrender(int turn) {
         printf("Try again");
         return surrender(turn);
        } else if(yn == 'y') {
+
             return true;
        }else {
             return false;
        }
     }
+}
+
+char playAgain(int turn) {
+    char yesNo;
+    if(turn == -1) {
+        printf("Would you like to play checkers?: ");
+        printf("Please enter 'y' or 'n': ");
+        scanf(" %c", &yesNo);
+    } else {
+        printf("Would you like to play again?: ");
+        printf("Please enter 'y' or 'n': ");
+        scanf(" %c", &yesNo);
+    }
+    return yesNo;
 }
